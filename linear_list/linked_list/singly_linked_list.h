@@ -4,8 +4,8 @@
 
 namespace singly_linked_list
 {
-	struct list_node;
-	struct list;
+    struct list_node;
+    struct list;
 
     list& init_list();
     void destroy_list(list& list);
