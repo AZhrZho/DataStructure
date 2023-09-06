@@ -6,6 +6,7 @@ int main()
     test_static_seq_list();
     test_dynamic_seq_list();
     test_singly_linked_list();
+    test_doubly_linked_list();
     return 0;
 }
 
@@ -174,4 +175,69 @@ void test_singly_linked_list()
 
     // should be invalid
     // singly_linked_list::print_list(list);
+}
+
+void test_doubly_linked_list()
+{
+    std::cout << "head insert" << std::endl;
+    linked_list_double list = doubly_linked_list::init_list();
+    doubly_linked_list::insert(list, 0, 0);
+    doubly_linked_list::insert(list, 0, 1);
+    doubly_linked_list::insert(list, 0, 2);
+    doubly_linked_list::insert(list, 0, 3);
+    doubly_linked_list::insert(list, 0, 4);
+    doubly_linked_list::insert(list, 0, 5);
+    doubly_linked_list::print_list(list);
+
+    std::cout << "tail insert" << std::endl;
+    doubly_linked_list::insert(list, doubly_linked_list::length(list), 1);
+    doubly_linked_list::insert(list, doubly_linked_list::length(list), 2);
+    doubly_linked_list::insert(list, doubly_linked_list::length(list), 3);
+    doubly_linked_list::insert(list, doubly_linked_list::length(list), 4);
+    doubly_linked_list::insert(list, doubly_linked_list::length(list), 5);
+    doubly_linked_list::print_list(list);
+
+    std::cout << "insert" << std::endl;
+    doubly_linked_list::insert(list, 1, 3);
+    doubly_linked_list::insert(list, 10, 8);
+    doubly_linked_list::print_list(list);
+
+    std::cout << "push back" << std::endl;
+    doubly_linked_list::push_back(list, 10);
+    doubly_linked_list::push_back(list, 11);
+    doubly_linked_list::print_list(list);
+
+    std::cout << std::endl << "remove sides" << std::endl;
+    doubly_linked_list::remove_at(list, 0);
+    doubly_linked_list::remove_at(list, doubly_linked_list::length(list) - 1);
+    doubly_linked_list::print_list(list);
+
+    std::cout << std::endl << "remove" << std::endl;
+    doubly_linked_list::remove_at(list, 2);
+    doubly_linked_list::remove_at(list, doubly_linked_list::length(list) - 3);
+    doubly_linked_list::print_list(list);
+
+    std::cout << std::endl << "get" << std::endl;
+    ElemType elem;
+    doubly_linked_list::get(list, 1, elem);
+    std::cout << elem << std::endl;
+    elem = 999;
+    doubly_linked_list::print_list(list);
+
+    std::cout << std::endl << "alter" << std::endl;
+    ElemType_P elem_p;
+    doubly_linked_list::get_mut(list, 0, elem_p);
+    std::cout << *elem_p << std::endl;
+    *elem_p = 999;
+    doubly_linked_list::print_list(list);
+
+    std::cout << std::endl << "find" << std::endl;
+    int index = doubly_linked_list::find(list, 0);
+    std::cout << index << std::endl;
+    index = doubly_linked_list::find(list, 2);
+    std::cout << index << std::endl;
+    index = doubly_linked_list::find(list, 8);
+    std::cout << index << std::endl;
+    index = doubly_linked_list::find(list, -1);
+    std::cout << index << std::endl;
 }
