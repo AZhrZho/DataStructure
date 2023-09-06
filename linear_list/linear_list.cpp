@@ -111,6 +111,14 @@ void test_dynamic_seq_list()
 	dynamic_seq_list::insert(list, 100, 100);
 	dynamic_seq_list::print_list(list);
 
+	std::cout << std::endl << "auto expand" << std::endl;
+	for (int i = 0; i < 128; i++)
+	{
+		dynamic_seq_list::push_back(list, i);
+	}
+
+	dynamic_seq_list::print_list(list);
+
 	std::cout << std::endl << "destroy" << std::endl;
 	dynamic_seq_list::destroy_list(list);
 
