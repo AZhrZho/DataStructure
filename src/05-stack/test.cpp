@@ -2,19 +2,12 @@
 #include <iostream>
 #include <unordered_map>
 
+int a() { return 1;}
+int b() { return 2;}
+int (*arr[]) () = {a, b};
+
 int main()
 {
-    int numbers[] = { 7,3,6,4,-1,2,5,8,1,10 };
-    int sum = 9;
-
-    auto v = std::unordered_map<int, int>();
-    
-    for (int num: numbers)
-    {
-        auto iter = v.find(num);
-        if (iter != v.end()) std::cout << iter->second << ", " << num << std::endl;
-        else v[sum-num] = num;
-    }
-    
+    std::cout << arr[0]() << arr[1]() << std::endl;
     return 0;
 }
